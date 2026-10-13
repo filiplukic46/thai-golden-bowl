@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thai Golden Bowl | Thai Restaurant in Kirkland</title>
+<meta name="description" content="Family-owned Thai restaurant in Finn Hill, Kirkland. Kao Soi, Kao Mun Gai, housemade sauces and vegan options. Order online, book a table, catering and private parties.">
+<meta property="og:title" content="Thai Golden Bowl, restaurant in Kirkland">
+<meta property="og:description" content="Family-owned Thai restaurant in Finn Hill, Kirkland. Order online, book a table, catering and private parties.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="theme-color" content="#12100b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root {
+    --bg: #12100b;
+    --bg-2: #1a1610;
+    --surface: #221d15;
+    --line: rgba(226, 197, 138, 0.16);
+    --gold: #d4ae66;
+    --gold-soft: #e7cf9c;
+    --ink: #15110a;
+    --cream: #f3ebdc;
+    --muted: #a99e89;
+    --sans: "Cabinet Grotesk", system-ui, sans-serif;
+    --serif: "Instrument Serif", Georgia, serif;
+    --pad: clamp(1rem, 4vw, 3rem);
+    --section: clamp(8rem, 14vw, 12rem);
+    --ease: cubic-bezier(.2, .7, .1, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  main { overflow-x: hidden; width: 100%; max-width: 100%; position: relative; }
+
+  /* Grain overlay across the whole page */
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: .07;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .wrap { width: 100%; max-width: 88rem; margin: 0 auto; padding: 0 var(--pad); }
+  .serif { font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: 0; }
+  .gold { color: var(--gold); }
+  .eyebrow { color: var(--gold); font-size: .95rem; font-weight: 500; letter-spacing: .02em; margin: 0 0 1.25rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    min-height: 3.25rem; padding: 0 1.6rem;
+    border-radius: 999px;
+    font-weight: 700; font-size: 1rem;
+    transition: transform .4s var(--ease), background-color .3s, color .3s, border-color .3s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, .slice:focus-visible {
+    outline: 2px solid var(--gold-soft); outline-offset: 3px;
+  }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-gold:hover { background: var(--gold-soft); }
+  .btn-ghost { border: 1px solid rgba(243, 235, 220, .35); color: var(--cream); background: rgba(18, 16, 11, .3); backdrop-filter: blur(8px); }
+  .btn-ghost:hover { border-color: var(--cream); }
+  .btn svg { width: 1.1em; height: 1.1em; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+    z-index: 50;
+    width: min(calc(100% - 2rem), 62rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: .55rem .55rem .55rem 1.4rem;
+    border-radius: 999px;
+    background: rgba(26, 22, 16, .55);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  }
+  .logo { display: flex; align-items: baseline; gap: .4rem; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
+  .logo .serif { color: var(--gold); font-size: 1.35rem; }
+  .nav ul { display: flex; gap: 1.8rem; list-style: none; margin: 0; padding: 0; font-size: .95rem; color: var(--muted); }
+  .nav ul a { transition: color .3s; }
+  .nav ul a:hover { color: var(--cream); }
+  .nav .btn { min-height: 2.6rem; padding: 0 1.2rem; font-size: .92rem; }
+  @media (max-width: 860px) { .nav ul { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid; place-items: center;
+    text-align: center;
+    padding: 8rem var(--pad) 6rem;
+    isolation: isolate;
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.55) saturate(1.05);
+    transform: scale(1.08);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 45%, rgba(18,16,11,.78) 0%, rgba(18,16,11,.5) 60%, rgba(18,16,11,.8) 100%),
+      linear-gradient(to bottom, rgba(18,16,11,.6), transparent 30%, transparent 70%, var(--bg));
+  }
+  .hero h1 {
+    max-width: 72rem;
+    margin: 0 auto;
+    font-size: clamp(2.6rem, 5vw, 5.5rem);
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -.035em;
+  }
+  .hero h1 .serif { color: var(--gold-soft); font-size: 1.08em; letter-spacing: -.01em; white-space: nowrap; }
+  .hero p {
+    max-width: 38rem; margin: 1.8rem auto 2.6rem;
+    color: #e6dccb; font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  }
+  .hero h1, .hero p { text-shadow: 0 2px 24px rgba(0,0,0,.6); }
+  .hero-ctas { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+  .hero-foot {
+    position: absolute; left: 0; right: 0; bottom: 2rem;
+    display: flex; justify-content: space-between;
+    padding: 0 var(--pad);
+    font-size: .9rem; color: var(--muted);
+  }
+  @media (max-width: 640px) { .hero-foot { display: none; } }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-block: 1px solid var(--line);
+    padding: 1.6rem 0;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .marquee-track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+  .marquee-track span {
+    display: inline-flex; align-items: center; gap: 2.4rem; padding-right: 2.4rem;
+    font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; letter-spacing: -.03em; white-space: nowrap;
+  }
+  .marquee-track .serif { color: var(--gold); font-weight: 400; }
+  .marquee-track i { width: .45rem; height: .45rem; border-radius: 50%; background: var(--gold); display: inline-block; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Story with inline images ---------- */
+  .story { padding: var(--section) 0; position: relative; }
+  .story::before {
+    content: ""; position: absolute; width: 60rem; height: 60rem; left: -20rem; top: 0;
+    background: radial-gradient(circle, rgba(212,174,102,.12), transparent 60%);
+    filter: blur(40px); pointer-events: none;
+  }
+  .story h2 {
+    max-width: 76rem;
+    margin: 0;
+    font-size: clamp(2.2rem, 4.6vw, 4.8rem);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -.035em;
+  }
+  .pill-img {
+    display: inline-block;
+    width: clamp(4.5rem, 9vw, 9rem);
+    height: clamp(2.2rem, 4vw, 4rem);
+    border-radius: 999px;
+    vertical-align: middle;
+    margin: 0 .25em;
+    background-size: cover; background-position: center;
+    filter: saturate(1.05);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+    transform: translateY(-.08em);
+  }
+  .story-foot {
+    margin-top: 4rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2.5rem 4rem;
+    max-width: 60rem; margin-left: auto;
+    color: var(--muted);
+  }
+  .story-foot p { margin: 0; }
+  .story-foot strong { color: var(--cream); font-weight: 700; }
+
+  /* ---------- Bento ---------- */
+  .bento-sec { padding-bottom: var(--section); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .sec-head h2 {
+    margin: 0; max-width: 54rem;
+    font-size: clamp(2rem, 3.6vw, 3.6rem); line-height: 1.05; font-weight: 800; letter-spacing: -.035em;
+  }
+  .sec-head p { margin: 0; max-width: 26rem; color: var(--muted); }
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(17rem, auto);
+    grid-auto-flow: dense;
+    gap: 1rem;
+  }
+  .card {
+    position: relative; overflow: hidden;
+    border-radius: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.75rem;
+    min-height: 17rem;
+    isolation: isolate;
+  }
+  .card > img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+    filter: brightness(.78);
+    transition: transform .9s var(--ease), filter .9s var(--ease);
+  }
+  .card::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(to top, rgba(18,16,11,.92) 0%, rgba(18,16,11,.35) 55%, rgba(18,16,11,.05) 100%);
+  }
+  .card:hover > img { transform: scale(1.05); filter: brightness(.9); }
+  .card h3 { margin: 0 0 .5rem; font-size: clamp(1.4rem, 2vw, 2rem); line-height: 1.1; font-weight: 700; letter-spacing: -.025em; }
+  .card p { margin: 0; color: #cfc3ad; max-width: 32rem; font-size: 1rem; }
+  .card .more { margin-top: 1.2rem; display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; color: var(--gold-soft); }
+  .card .more svg { width: 1rem; height: 1rem; transition: transform .4s var(--ease); }
+  .card:hover .more svg { transform: translateX(4px); }
+  .span-a { grid-column: span 2; grid-row: span 2; }
+  .span-a h3 { font-size: clamp(2rem, 3.2vw, 3rem); }
+  .span-b { grid-column: span 2; }
+  .card.plain { background: radial-gradient(circle at 80% 0%, rgba(212,174,102,.22), transparent 55%), var(--surface); justify-content: space-between; gap: 1.5rem; }
+  .card.plain::after { display: none; }
+  .card .big { font-family: var(--serif); font-style: italic; color: var(--gold); font-size: clamp(2.8rem, 4vw, 4.2rem); line-height: 1; padding-bottom: .1em; }
+  @media (max-width: 1000px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .bento { grid-template-columns: 1fr; }
+    .span-a, .span-b { grid-column: span 1; grid-row: span 1; }
+    .span-a { min-height: 26rem; }
+  }
+
+  /* ---------- Pinned menu split ---------- */
+  .menu-sec {
+    padding: var(--section) 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 85% 20%, rgba(212,174,102,.1), transparent 70%),
+      var(--bg-2);
+    border-top: 1px solid var(--line);
+  }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .split-left h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.4rem, 4.4vw, 4.6rem); line-height: 1; font-weight: 800; letter-spacing: -.04em;
+  }
+  .split-left p { color: var(--muted); max-width: 26rem; margin: 0 0 2.2rem; }
+  .split-left .btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+  .dishes { display: flex; flex-direction: column; gap: clamp(4rem, 8vw, 7rem); }
+  .dish figure { margin: 0; border-radius: 1.5rem; overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface); }
+  .dish img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05); transition: transform .9s var(--ease); }
+  .dish:hover img { transform: scale(1.05); }
+  .dish-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; margin-top: 1.4rem; }
+  .dish h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.2rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+  .dish h3 .serif { color: var(--gold); }
+  .dish p { margin: .4rem 0 0; color: var(--muted); max-width: 30rem; }
+  .dish .heat { flex-shrink: 0; font-size: .9rem; color: var(--gold-soft); }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+
+  /* ---------- Horizontal accordion ---------- */
+  .ways { padding: var(--section) 0; }
+  .accordion { display: flex; gap: .75rem; height: clamp(30rem, 70vh, 38rem); }
+  .slice {
+    position: relative; flex: 1 1 0; min-width: 0;
+    border-radius: 1.5rem; overflow: hidden;
+    border: 1px solid var(--line);
+    transition: flex-grow .8s var(--ease);
+    cursor: pointer;
+    isolation: isolate;
+  }
+  .slice img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+    filter: grayscale(.5) brightness(.5);
+    transition: filter .8s var(--ease), transform .9s var(--ease);
+  }
+  .slice::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(to top, rgba(18,16,11,.97) 0%, rgba(18,16,11,.85) 40%, rgba(18,16,11,.15) 80%);
+  }
+  .slice .tab {
+    position: absolute; left: 1.4rem; bottom: 1.6rem;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap;
+    transition: opacity .4s;
+  }
+  .slice .body {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 2rem;
+    opacity: 0; transform: translateY(1rem);
+    transition: opacity .5s .1s, transform .6s var(--ease);
+    min-width: 26rem;
+  }
+  .slice h3 { margin: 0 0 .6rem; font-size: clamp(1.8rem, 2.6vw, 2.6rem); line-height: 1.05; font-weight: 800; letter-spacing: -.03em; }
+  .slice p { margin: 0 0 1.4rem; color: #d3c7b1; max-width: 34rem; font-size: 1rem; }
+  .slice .eyebrow { color: var(--gold); margin: 0 0 .6rem; font-size: .92rem; }
+  .slice.is-open { flex-grow: 4; }
+  .slice.is-open img { filter: brightness(.7); transform: scale(1.04); }
+  .slice.is-open .tab { opacity: 0; }
+  .slice.is-open .body { opacity: 1; transform: none; }
+  @media (max-width: 760px) {
+    .accordion { flex-direction: column; height: auto; }
+    .slice { flex: none; min-height: 22rem; cursor: default; }
+    .slice .tab { display: none; }
+    .slice .body { opacity: 1; transform: none; min-width: 0; padding: 1.5rem; }
+    .slice img { filter: brightness(.7); }
+  }
+
+  /* ---------- Reviews ---------- */
+  .reviews {
+    padding: var(--section) 0;
+    position: relative;
+    background:
+      radial-gradient(ellipse 45% 50% at 80% 50%, rgba(212,174,102,.1), transparent 70%),
+      var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .reviews-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .reviews-head h2 { margin: 0 0 2.5rem; font-size: clamp(2.4rem, 4.4vw, 4.4rem); line-height: 1; font-weight: 800; letter-spacing: -.04em; }
+  .reviews-nav { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+  .arrow {
+    width: 3.25rem; height: 3.25rem; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--line); background: transparent; color: var(--cream);
+    cursor: pointer;
+    transition: background-color .3s, color .3s, border-color .3s, transform .4s var(--ease);
+  }
+  .arrow:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .arrow:active { transform: scale(.94); }
+  .arrow svg { width: 1.2rem; height: 1.2rem; }
+  .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .count b { color: var(--cream); font-weight: 700; }
+  .more-link { color: var(--gold-soft); font-weight: 700; border-bottom: 1px solid rgba(231,207,156,.35); padding-bottom: 2px; transition: border-color .3s; }
+  .more-link:hover { border-color: var(--gold-soft); }
+  .review-stage {
+    display: grid;
+    position: relative;
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: 1.75rem;
+    border: 1px solid var(--line);
+    background: linear-gradient(160deg, rgba(212,174,102,.08), transparent 45%), var(--surface);
+  }
+  .review-stage::before {
+    content: "\201C";
+    position: absolute; top: -.15em; right: .3em;
+    font-family: var(--serif); font-size: clamp(9rem, 16vw, 14rem); line-height: 1;
+    color: var(--gold); opacity: .18; pointer-events: none;
+  }
+  .review {
+    grid-area: 1 / 1;
+    margin: 0;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 2.5rem;
+    opacity: 0; visibility: hidden; transform: translateY(14px);
+    transition: opacity .6s var(--ease), transform .7s var(--ease), visibility 0s .6s;
+  }
+  .review.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity .6s var(--ease) .1s, transform .7s var(--ease) .1s, visibility 0s; }
+  .review blockquote {
+    margin: 0;
+    max-width: 40rem;
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem); line-height: 1.65;
+    color: #d8ccb6;
+  }
+  .review blockquote strong {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 2.3vw, 2.1rem); line-height: 1.15;
+    font-weight: 700; letter-spacing: -.025em;
+    color: var(--cream);
+  }
+  .review figcaption { display: flex; align-items: center; gap: 1rem; }
+  .review figcaption b { display: block; font-weight: 700; }
+  .review figcaption small { color: var(--muted); font-size: .9rem; }
+  .avatar {
+    width: 3rem; height: 3rem; border-radius: 50%; flex-shrink: 0;
+    display: grid; place-items: center;
+    background: var(--gold); color: var(--ink);
+    font-weight: 800; font-size: .95rem; letter-spacing: .02em;
+  }
+  .reserve .eyebrow { margin-bottom: 1rem; }
+  @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Reserve CTA ---------- */
+  .reserve {
+    position: relative; isolation: isolate;
+    padding: var(--section) 0;
+    text-align: center;
+    overflow: hidden;
+  }
+  .reserve > img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+    filter: brightness(.45);
+  }
+  .reserve::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(18,16,11,.4), var(--bg) 85%);
+  }
+  .reserve h2 {
+    max-width: 72rem; margin: 0 auto 1.6rem;
+    font-size: clamp(3rem, 8vw, 8.5rem); line-height: .95; font-weight: 800; letter-spacing: -.05em;
+  }
+  .reserve h2 .serif { color: var(--gold); letter-spacing: -.02em; }
+  .reserve p { max-width: 34rem; margin: 0 auto 2.6rem; color: #d8ccb6; font-size: 1.15rem; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); background: var(--bg-2); padding: 6rem 0 2.5rem; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; }
+  .foot-grid h4 { margin: 0 0 1rem; font-size: .95rem; color: var(--gold); font-weight: 500; }
+  .foot-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; color: var(--muted); }
+  .foot-grid ul a:hover { color: var(--cream); }
+  .news h3 { margin: 0 0 .6rem; font-size: 1.8rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+  .news p { margin: 0 0 1.5rem; color: var(--muted); max-width: 24rem; }
+  .news form { display: flex; gap: .5rem; max-width: 26rem; }
+  .news input {
+    flex: 1; min-width: 0; min-height: 3.25rem; padding: 0 1.2rem;
+    border-radius: 999px; border: 1px solid var(--line); background: var(--bg);
+    color: var(--cream); font: inherit;
+  }
+  .news input::placeholder { color: #7d7362; }
+  .socials { display: flex; gap: .6rem; margin-top: 1rem; }
+  .socials a {
+    width: 2.6rem; height: 2.6rem; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--line); color: var(--cream);
+    transition: background-color .3s, color .3s;
+  }
+  .socials a:hover { background: var(--gold); color: var(--ink); }
+  .socials svg { width: 1.1rem; height: 1.1rem; }
+  .wordmark {
+    margin: 5rem 0 2rem;
+    font-size: clamp(3rem, 12.5vw, 13rem); line-height: .85; font-weight: 800; letter-spacing: -.06em;
+    color: transparent; -webkit-text-stroke: 1px rgba(212,174,102,.35);
+    white-space: nowrap;
+  }
+  .legal { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: #7d7362; font-size: .9rem; }
+  @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } .news { grid-column: 1 / -1; } }
+  @media (max-width: 520px) { .foot-grid { grid-template-columns: 1fr; } .news form { flex-direction: column; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .marquee-track { animation: none; }
+    *, *::before, *::after { transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- Nav -->
+  <nav class="nav" aria-label="Main">
+    <a href="#top" class="logo" aria-label="Thai Golden Bowl home">Thai <span class="serif">Golden</span> Bowl</a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#occasions">Catering</a></li>
+      <li><a href="#occasions">Private parties</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#menu" class="btn btn-gold">Order online</a>
+  </nav>
+
+  <!-- Attention -->
+  <header class="hero" id="top">
+    <div class="hero-bg"><img src="img/hero.jpg" alt="" data-parallax></div>
+    <div>
+      <h1 data-hero>Thai Golden Bowl, <span class="serif">restaurant in Kirkland</span></h1>
+      <p data-hero>A family-owned Thai restaurant in Finn Hill. Signature housemade sauces, vegan options and a cozy room to take your time in.</p>
+      <div class="hero-ctas" data-hero>
+        <a href="#menu" class="btn btn-gold">Order online
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#reserve" class="btn btn-ghost">Book a table</a>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <span>Finn Hill, Kirkland</span>
+      <span>Open daily, 11am to 9pm</span>
+    </div>
+  </header>
+
+  <!-- Interest -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Kao Mun Gai <i></i> <em class="serif">Kao Soi</em> <i></i> Crispy pork belly with basil <i></i> <em class="serif">Pad Kee Mao</em> <i></i> Fresh Rolls <i></i> <em class="serif">Coconut ice cream</em> <i></i> Pad Thai <i></i></span>
+      <span>Kao Mun Gai <i></i> <em class="serif">Kao Soi</em> <i></i> Crispy pork belly with basil <i></i> <em class="serif">Pad Kee Mao</em> <i></i> Fresh Rolls <i></i> <em class="serif">Coconut ice cream</em> <i></i> Pad Thai <i></i></span>
+    </div>
+  </div>
+
+  <section class="story" id="about">
+    <div class="wrap">
+      <p class="eyebrow" data-fade>Discover the little details that set us apart</p>
+      <h2 data-fade>
+        Asian cuisine <span class="pill-img" role="img" aria-label="Duck curry" style="background-image:url('img/pill-curry.jpg')"></span>
+        rooted in family <span class="pill-img" role="img" aria-label="Kao Mun Gai" style="background-image:url('img/pill-kao-mun-gai.jpg')"></span>
+        tradition. <span class="serif gold">Stay a while.</span>
+      </h2>
+      <div class="story-foot" data-fade>
+        <p><strong>Tradition has its place, but curiosity keeps things interesting.</strong> We are a family-owned Thai restaurant in Kirkland serving dishes that go well beyond the familiar. Explore comforting Kao Mun Gai, rich Kao Soi, and crispy pork belly with basil, complemented by signature housemade sauces and vegan options.</p>
+        <p><strong>The cozy dining room invites you to take your time,</strong> perhaps over a specialty tea or craft cocktail. And dessert? Homemade coconut ice cream with sticky rice makes a convincing case for leaving room.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-fade>The next discovery <span class="serif gold">could be yours</span></h2>
+        <p data-fade>Even regulars can find a reason to change their routine. Your usual choice will still be waiting.</p>
+      </div>
+      <div class="bento">
+        <a href="#occasions" class="card span-a">
+          <img src="img/bento-cocktails.jpg" alt="Craft cocktails on the Thai Golden Bowl bar">
+          <h3>Your occasion looks better with a cocktail</h3>
+          <p>Craft cocktails and mocktails offer a fitting reason to raise a glass. Tell us what you're celebrating.</p>
+          <span class="more">Book a party <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a href="#menu" class="card span-b">
+          <img src="img/bento-spread.jpg" alt="A round table covered with Thai Golden Bowl dishes">
+          <h3>Noodles know how to steal the spotlight</h3>
+          <p>Pad Thai makes a familiar starting point, but Pad Kee Mao offers a spicier alternative.</p>
+          <span class="more">Order online <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a href="#reserve" class="card">
+          <img src="img/bento-dining-room.jpg" alt="Thai Golden Bowl dining room with booths and a palm mural">
+          <h3>A laid-back spot</h3>
+          <p>Linger over tea after a long week.</p>
+        </a>
+        <a href="#menu" class="card plain">
+          <span class="big">Vegan options</span>
+          <div>
+            <p>Signature housemade sauces and vegan options, right alongside the classics.</p>
+            <span class="more">See the menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Desire -->
+  <section class="menu-sec" id="menu">
+    <div class="wrap split" data-split>
+      <div class="split-left" data-pin>
+        <p class="eyebrow">Finn Hill has a few delicious decisions</p>
+        <h2>Noodles, curries, <span class="serif gold">ready to order</span></h2>
+        <p>Your usual order has competition. Pad Thai makes a familiar starting point, but Pad Kee Mao offers a spicier alternative. Prefer wide rice noodles? Pad See Ew deserves a closer look, while Fresh Rolls offer a lighter contrast. Browse the full selection, follow your appetite, and complete your order online.</p>
+        <div class="btns">
+          <a href="#" class="btn btn-gold">Order online</a>
+          <a href="#" class="btn btn-ghost">Full menu</a>
+        </div>
+      </div>
+      <div class="dishes">
+        <article class="dish">
+          <figure><img data-scale src="img/dish-kao-soi.jpg" alt="Kao Soi curry noodle soup with crispy noodles and egg" loading="lazy"></figure>
+          <div class="dish-meta">
+            <div><h3>Kao <span class="serif">Soi</span></h3><p>Northern Thai curry noodle soup, topped with a nest of crispy noodles, a soft egg and pickled shallots.</p></div>
+            <span class="heat">Medium</span>
+          </div>
+        </article>
+        <article class="dish">
+          <figure><img data-scale src="img/dish-duck-curry.jpg" alt="Duck curry in a square white bowl with Thai basil" loading="lazy"></figure>
+          <div class="dish-meta">
+            <div><h3>Duck <span class="serif">curry</span></h3><p>Sliced roast duck in red curry and coconut milk, finished with Thai basil.</p></div>
+            <span class="heat">Medium</span>
+          </div>
+        </article>
+        <article class="dish">
+          <figure><img data-scale src="img/dish-pineapple-fried-rice.jpg" alt="Pineapple fried rice with snow peas and cucumber" loading="lazy"></figure>
+          <div class="dish-meta">
+            <div><h3>Pineapple <span class="serif">fried rice</span></h3><p>Golden wok-fried rice with sweet pineapple and snow peas, served with fresh cucumber on the side.</p></div>
+            <span class="heat">Mild</span>
+          </div>
+        </article>
+        <article class="dish">
+          <figure><img data-scale src="img/dish-cashew-chicken.jpg" alt="Crispy chicken with cashews and green onion" loading="lazy"></figure>
+          <div class="dish-meta">
+            <div><h3>Crispy chicken <span class="serif">and cashews</span></h3><p>Crunchy chicken tossed in a sticky chili glaze with roasted cashews and green onion.</p></div>
+            <span class="heat">Mild</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ways" id="occasions">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-fade>Plans for <span class="serif gold">every occasion</span></h2>
+        <p data-fade>Catering, private parties and our latest specials. Hover or tap a panel to read more.</p>
+      </div>
+      <div class="accordion" data-accordion>
+        <article class="slice is-open" tabindex="0">
+          <img src="img/way-catering.jpg" alt="">
+          <span class="tab">Catering</span>
+          <div class="body">
+            <p class="eyebrow">Kirkland events deserve the best food</p>
+            <h3>Thai catering for every table</h3>
+            <p>A proper spread should spark a lively debate over who gets the last bite. Crisp appetizers set things in motion, followed by fragrant rice dishes, stir-fried specialties, and aromatic curries. Our Thai food offers familiar classics alongside less expected choices for birthdays, office functions, and family reunions. Contact us to discuss your catering arrangements.</p>
+            <a href="#" class="btn btn-gold">Catering</a>
+          </div>
+        </article>
+        <article class="slice" tabindex="0">
+          <img src="img/way-private-party.jpg" alt="">
+          <span class="tab">Private parties</span>
+          <div class="body">
+            <p class="eyebrow">Keep the speeches short and the glasses full</p>
+            <h3>Private parties done right</h3>
+            <p>Birthdays, anniversaries, and reunions have a way of taking on their own personalities. Our cozy, casual space leaves the formalities behind, while craft cocktails and mocktails offer a fitting reason to raise a glass. Tell us what you're celebrating, and we'll help you turn the occasion into a proper get-together.</p>
+            <a href="#" class="btn btn-gold">Book a party</a>
+          </div>
+        </article>
+        <article class="slice" tabindex="0">
+          <img src="img/way-specials.jpg" alt="">
+          <span class="tab">Specials</span>
+          <div class="body">
+            <p class="eyebrow">Keep an eye out for what's next</p>
+            <h3>Explore our specials</h3>
+            <p>Even regulars can find a reason to change their routine. Check our featured offerings, take a closer look at what catches your interest, and try a different direction on your next visit. Your usual choice will still be waiting.</p>
+            <a href="#" class="btn btn-gold">See specials</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" aria-roledescription="carousel" aria-label="Guest reviews">
+    <div class="wrap reviews-grid">
+      <div class="reviews-head">
+        <p class="eyebrow" data-fade>Reviews from Google</p>
+        <h2 data-fade>What Finn Hill <span class="serif gold">is saying</span></h2>
+        <div class="reviews-nav" data-fade>
+          <button type="button" class="arrow" data-prev aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <span class="count" aria-hidden="true"><b data-current>01</b> / 05</span>
+          <button type="button" class="arrow" data-next aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <a class="more-link" data-fade href="https://www.google.com/maps/search/Thai+Golden+Bowl+Kirkland" target="_blank" rel="noopener">Read all reviews on Google</a>
+      </div>
+      <div class="review-stage" aria-live="polite" data-fade>
+        <figure class="review is-active">
+          <blockquote><strong>Food was great, and service was excellent!</strong> Very friendly and accommodating staff. We had cashew nut chicken and thai basil beef which were good, but the highlight of our meal was the longgan sundae with their HOMEMADE coconut ice cream. We're still thinking about that dessert!!! Try it!</blockquote>
+          <figcaption><span class="avatar">BG</span><span><b>Bea G</b><small>Review by Google</small></span></figcaption>
+        </figure>
+        <figure class="review" aria-hidden="true">
+          <blockquote><strong>The beef salad and pad see ew is delicious, our go to for take out!</strong> The mango sticky rice, when in season, is a comforting dessert, no one can share with me.</blockquote>
+          <figcaption><span class="avatar">OM</span><span><b>Olga M</b><small>Review by Google</small></span></figcaption>
+        </figure>
+        <figure class="review" aria-hidden="true">
+          <blockquote><strong>Oh my God, this place has the flavors!</strong> Their pad Thai is delicious of course, but the purple rice and Thai basil dishes are unreal. Try their Thai iced tea too, it's superb and very unique. You won't be able to put it down. Very chill music and extremely friendly staff. We will be back for sure and will spread the word!</blockquote>
+          <figcaption><span class="avatar">AP</span><span><b>A P</b><small>Review by Google</small></span></figcaption>
+        </figure>
+        <figure class="review" aria-hidden="true">
+          <blockquote><strong>Cozy and clean spot with friendly staff!</strong> I ordered Garlic Delight with tofu and crispy rolls. The tofu is done well, white rice is perfect, rolls are crispy, can't wait to try more food from here. Definately a new go to spot for me!</blockquote>
+          <figcaption><span class="avatar">CB</span><span><b>Chelsea B</b><small>Review by Google</small></span></figcaption>
+        </figure>
+        <figure class="review" aria-hidden="true">
+          <blockquote><strong>The best Thai food in the Finn hill neighborhood.</strong> Every dish we tried is great. They use fresh produce and the meet is always tender and cooked right.</blockquote>
+          <figcaption><span class="avatar">DO</span><span><b>Diana O</b><small>Review by Google</small></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action -->
+  <section class="reserve" id="reserve">
+    <img src="img/reserve.jpg" alt="">
+    <div class="wrap">
+      <p class="eyebrow" data-fade>More time for what matters</p>
+      <h2 data-fade>Save your seat <span class="serif">today</span></h2>
+      <p data-fade>Dinner dates don't need elaborate agendas. Neither does catching up with a friend over a cocktail or lingering over tea after a long week. At our laid-back spot, conversation can take its own course. Simply choose when to visit, reserve your seats, and leave the rest unscripted.</p>
+      <div class="hero-ctas" data-fade>
+        <a href="#" class="btn btn-gold">Book a table</a>
+        <a href="https://www.google.com/maps/search/Thai+Golden+Bowl+Kirkland" target="_blank" rel="noopener" class="btn btn-ghost">Get directions</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="visit">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="news">
+          <h3>Hear about the specials first</h3>
+          <p>One short email when the menu changes. No spam.</p>
+          <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks';">
+            <label for="email" class="sr-only" style="position:absolute;left:-9999px">Email address</label>
+            <input id="email" type="email" placeholder="you@email.com" required>
+            <button class="btn btn-gold" type="submit" style="border:0;cursor:pointer;font-family:inherit">Subscribe</button>
+          </form>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <ul>
+            <li>Finn Hill, Kirkland, WA</li>
+            <li><a href="https://www.google.com/maps/search/Thai+Golden+Bowl+Kirkland" target="_blank" rel="noopener">Get directions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Open daily</li>
+            <li>11am to 9pm</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Find us</h4>
+          <ul>
+            <li><a href="#menu">Order online</a></li>
+            <li><a href="#reserve">Reservations</a></li>
+          </ul>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v7h4v-7h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+            <a href="#" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v9M12 12l7-3M12 12l6 6M12 12l-6 5M12 12L5 9"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="wordmark" aria-hidden="true">Golden Bowl</div>
+      <div class="legal">
+        <span>&copy; 2026 Thai Golden Bowl, Kirkland WA</span>
+        <span>Asian cuisine rooted in family tradition</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  // Horizontal accordion: open on hover, focus or tap
+  (function () {
+    var slices = document.querySelectorAll('[data-accordion] .slice');
+    function open(el) {
+      slices.forEach(function (s) { s.classList.toggle('is-open', s === el); });
+    }
+    slices.forEach(function (s) {
+      s.addEventListener('mouseenter', function () { open(s); });
+      s.addEventListener('focusin', function () { open(s); });
+      s.addEventListener('click', function () { open(s); });
+    });
+  })();
+
+  // Reviews carousel: arrows and arrow keys, no autoplay
+  (function () {
+    var root = document.querySelector('#reviews');
+    if (!root) return;
+    var slides = root.querySelectorAll('.review');
+    var counter = root.querySelector('[data-current]');
+    var i = 0;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        s.classList.toggle('is-active', k === i);
+        s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      });
+      counter.textContent = String(i + 1).padStart(2, '0');
+    }
+    root.querySelector('[data-prev]').addEventListener('click', function () { show(i - 1); });
+    root.querySelector('[data-next]').addEventListener('click', function () { show(i + 1); });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+  })();
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    var mm = gsap.matchMedia();
+
+    mm.add('(prefers-reduced-motion: no-preference)', function () {
+      // Hero entrance and slow background drift
+      gsap.from('[data-hero]', { y: 40, opacity: 0, duration: 1.2, stagger: .12, ease: 'power3.out', delay: .1 });
+      gsap.to('[data-parallax]', {
+        yPercent: 12, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+
+      // Section text fade-ups
+      gsap.utils.toArray('[data-fade]').forEach(function (el) {
+        gsap.from(el, {
+          y: 50, opacity: 0, duration: 1.1, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' }
+        });
+      });
+
+      // Image scale and fade: grow in, darken and fade on the way out
+      gsap.utils.toArray('[data-scale]').forEach(function (img) {
+        var fig = img.parentElement;
+        gsap.fromTo(fig, { scale: .8 }, {
+          scale: 1, ease: 'none',
+          scrollTrigger: { trigger: fig, start: 'top bottom', end: 'top 35%', scrub: true }
+        });
+        gsap.to(fig, {
+          opacity: .2, filter: 'brightness(.5)', ease: 'none',
+          scrollTrigger: { trigger: fig, start: 'bottom 40%', end: 'bottom top', scrub: true }
+        });
+      });
+
+      // Bento cards rise in a stagger
+      gsap.from('.bento .card', {
+        y: 70, opacity: 0, duration: 1, stagger: .1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.bento', start: 'top 80%' }
+      });
+    });
+
+    // Pin the menu heading on wide screens while dishes scroll past
+    mm.add('(prefers-reduced-motion: no-preference) and (min-width: 901px)', function () {
+      ScrollTrigger.create({
+        trigger: '[data-split]',
+        start: 'top 18%',
+        end: function () {
+          var split = document.querySelector('[data-split]');
+          var pin = document.querySelector('[data-pin]');
+          return '+=' + Math.max(0, split.offsetHeight - pin.offsetHeight);
+        },
+        pin: '[data-pin]',
+        pinSpacing: false,
+        invalidateOnRefresh: true
+      });
+    });
+
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+  }
+</script>
+</body>
+</html>
